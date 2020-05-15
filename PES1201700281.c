@@ -86,7 +86,6 @@ char* intal_add(const char* intal1, const char* intal2){
         sum = d1 + d2 + carry;
         carry = sum / 10;
         sum = sum % 10;
-        printf("%d _____ %d\n",k,sum);
         res[k] = sum + '0';
         k--;
     }
