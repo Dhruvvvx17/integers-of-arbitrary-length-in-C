@@ -140,17 +140,17 @@ int main(int argc, char const *argv[]) {
 		free(result1);
 	}
 
-	// result1 = intal_gcd(a[0], a[5]);
-	// if(!result1) {
-	// 	printf("Test intal_gcd FAILED.\n");
-	// } else {
-	// 	if(0 == strcmp(result1, "3")) {
-	// 		printf("Test intal_gcd PASSED\n");
-	// 	} else {
-	// 		printf("Test intal_gcd FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, "3");
-	// 	}
-	// 	free(result1);
-	// }
+	result1 = intal_gcd(a[0], a[5]);
+	if(!result1) {
+		printf("Test intal_gcd FAILED.\n");
+	} else {
+		if(0 == strcmp(result1, "3")) {
+			printf("Test intal_gcd PASSED\n");
+		} else {
+			printf("Test intal_gcd FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, "3");
+		}
+		free(result1);
+	}
 
 	// result1 = intal_fibonacci(3);
 	// if(!result1) {

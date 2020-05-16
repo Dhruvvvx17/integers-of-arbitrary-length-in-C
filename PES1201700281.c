@@ -6,7 +6,7 @@
 // Helper Function declarations
 static char* padding(const char* intalTemp, int zeros, int new_length);
 static char* stripZeros(const char* intalTemp);
-
+static char* compute_gcd(char* n1, char* n2);
 
 // Padding the given string with prefix zeros to make the new length equal to the given length
 static char* padding(const char* intalTemp, int zeros, int new_length){
@@ -373,4 +373,38 @@ char* intal_pow(const char* intal1, unsigned int n){
         free(temp);
         return res;
     }
+}
+
+
+// 7. INTAL_GCD: Function to find gcd of intal1 and intal2
+char* intal_gcd(const char* intal1, const char* intal2){
+    //check for border case of having intal1 and intal2 as 0, in which case, return 0
+    if( intal_compare(intal1,"0")==0 && intal_compare(intal2,"0")==0 ){
+        char *res = (char*)malloc(sizeof(char)*2);
+        res[0] = '0';
+        res[1] = '\0';
+        return res;        
+    }
+    else{
+        char *res, *n1, *n2;
+        n1 = strdup(intal1);
+        n2 = strdup(intal2);
+        res = compute_gcd(n1,n2);
+        free(n1);
+        free(n2);
+        return res;
+    }
+}
+
+// Helper fucntion, includes actual euclidean algorithm for gcd
+static char* compute_gcd(char* n1, char* n2){
+    if(intal_compare(n2,"0")==0){
+        char *res = strdup(n1);
+        return res;
+    }
+    char *t, *res;
+    t = intal_mod(n1,n2);
+    res = compute_gcd(n2,t);
+    free(t);
+    return res;
 }
