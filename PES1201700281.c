@@ -72,6 +72,7 @@ char* intal_add(const char* intal1, const char* intal2){
     else{
         new_intal1 = strdup(intal1);
         new_intal2 = strdup(intal2);
+        res_len = l1;
     }
 
     char *res;
