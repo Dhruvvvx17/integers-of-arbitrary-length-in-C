@@ -68,41 +68,41 @@ int main(int argc, char const *argv[]) {
 		free(result1);
 	}
 
-	// result1 = intal_mod(a[3], a[4]);
-	// if(!result1) {
-	// 	printf("Test intal_mod FAILED.\n");
-	// } else {
-	// 	if(0 == strcmp(result1, "1")) {
-	// 		printf("Test intal_mod PASSED\n");
-	// 	} else {
-	// 		printf("Test intal_mod FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, "1");
-	// 	}
-	// 	free(result1);
-	// }
+	result1 = intal_mod(a[3], a[4]);
+	if(!result1) {
+		printf("Test intal_mod FAILED.\n");
+	} else {
+		if(0 == strcmp(result1, "1")) {
+			printf("Test intal_mod PASSED\n");
+		} else {
+			printf("Test intal_mod FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, "1");
+		}
+		free(result1);
+	}
 
-	// result1 = intal_mod("978", "5");
-	// if(!result1) {
-	// 	printf("Test intal_mod FAILED.\n");
-	// } else {
-	// 	if(0 == strcmp(result1, "3")) {
-	// 		printf("Test intal_mod PASSED\n");
-	// 	} else {
-	// 		printf("Test intal_mod FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, "3");
-	// 	}
-	// 	free(result1);
-	// }
+	result1 = intal_mod("978", "5");
+	if(!result1) {
+		printf("Test intal_mod FAILED.\n");
+	} else {
+		if(0 == strcmp(result1, "3")) {
+			printf("Test intal_mod PASSED\n");
+		} else {
+			printf("Test intal_mod FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, "3");
+		}
+		free(result1);
+	}
 
-	// result1 = intal_mod(a[0], a[5]);
-	// if(!result1) {
-	// 	printf("Test intal_mod FAILED.\n");
-	// } else {
-	// 	if(0 == strcmp(result1, "9")) {
-	// 		printf("Test intal_mod PASSED\n");
-	// 	} else {
-	// 		printf("Test intal_mod FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, "9");
-	// 	}
-	// 	free(result1);
-	// }
+	result1 = intal_mod(a[0], a[5]);
+	if(!result1) {
+		printf("Test intal_mod FAILED.\n");
+	} else {
+		if(0 == strcmp(result1, "9")) {
+			printf("Test intal_mod PASSED\n");
+		} else {
+			printf("Test intal_mod FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, "9");
+		}
+		free(result1);
+	}
 
 	// result1 = intal_pow(a[5], 3);
 	// if(!result1) {
