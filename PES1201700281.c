@@ -27,6 +27,24 @@ static char* padding(const char* intalTemp, int zeros, int new_length){
 
 // Removing any prefix zeros from the given string
 static char* stripZeros(const char* intalTemp){
+
+    //check if the string contains all zeros, in which case a single character 0 should be returned
+    int check = 1;      // temporary variable to check if the string is all zeros
+    for(int i=0; i<strlen(intalTemp); i++){
+        if(intalTemp[i] != '0'){
+            check = 0;
+            break;
+        }
+    }
+    if(check){
+        char *res = (char*)malloc(sizeof(char)*2);
+        res[0] = '0';
+        res[1] = '\0';
+        return res;
+    }
+
+    //as it is confirmed that the string contains characters other than all zeros,
+    //removing all preceeding zeros from the string 
     int initial_zeros = 0;
     for(int i=0; i<strlen(intalTemp); i++){
         if(intalTemp[i]=='0')
