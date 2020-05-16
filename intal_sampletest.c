@@ -56,17 +56,17 @@ int main(int argc, char const *argv[]) {
 		free(result1);
 	}
 
-	// result1 = intal_multiply(a[8], a[5]);
-	// if(!result1) {
-	// 	printf("Test intal_multiply FAILED.\n");
-	// } else {
-	// 	if(0 == strcmp(result1, "65185851858518585185851852")) {
-	// 		printf("Test intal_multiply PASSED\n");
-	// 	} else {
-	// 		printf("Test intal_multiply FAILED.\n.Your answer: %s\nExpected answer: %s\n", result1, "65185851858518585185851852");
-	// 	}
-	// 	free(result1);
-	// }
+	result1 = intal_multiply(a[8], a[5]);
+	if(!result1) {
+		printf("Test intal_multiply FAILED.\n");
+	} else {
+		if(0 == strcmp(result1, "65185851858518585185851852")) {
+			printf("Test intal_multiply PASSED\n");
+		} else {
+			printf("Test intal_multiply FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, "65185851858518585185851852");
+		}
+		free(result1);
+	}
 
 	// result1 = intal_mod(a[3], a[4]);
 	// if(!result1) {

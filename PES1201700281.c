@@ -100,7 +100,7 @@ char* intal_add(const char* intal1, const char* intal2){
     res = t1;
 
     //free up any extra allocated memory
-    //t2 points to the result which might have preceeding zeros, hence its memmory has to be freed
+    //t2 points to the result which might have preceeding zeros, hence its memory has to be freed
     free(t2);
     //the original intal1 and intal2 are unaltered
     //either of intal1 or intal2 might be padded with 0s, the other is copied by strdup() 
@@ -211,12 +211,67 @@ char* intal_diff(const char* intal1, const char* intal2){
     t2 = res;
     res = t1;
 
-    //t2 points to the result which might have preceeding zeros, hence its memmory has to be freed
+    //t2 points to the result which might have preceeding zeros, hence its memory has to be freed
     free(t2);
     //the original intal1 and intal2 are unaltered
     //either of intal1 or intal2 might be padded with 0s, the other is copied by strdup() 
     free(new_intal1);       
     free(new_intal2);       
+
+    return res;
+}
+
+
+// 4. INTAL_MUL: Function to multiple two intal numbers
+char* intal_multiply(const char* intal1, const char* intal2){
+    int l1, l2, res_len;
+    l1 = strlen(intal1);
+    l2 = strlen(intal2);
+    res_len = l1+l2;
+
+    //create a string of all zeros of length l1+l2
+    char *res = (char*)malloc(sizeof(char)*(res_len+1));
+    for(int k=0;k<res_len;k++){
+        res[k] = '0';
+    }
+    res[res_len] = '\0';
+
+    int i, j, d1, d2, sum, carry, v_shift=res_len-1, h_shift=0;
+
+    for(i=l1-1; i>=0; i--){
+        d1 = intal1[i] - '0';
+        carry = 0;
+        v_shift = res_len-1;
+
+        for(j=l2-1; j>=0; j--){
+            d2 = intal2[j] - '0';
+            sum = (d1*d2) + (res[v_shift-h_shift] - '0') + carry;
+            carry = sum / 10;
+            sum = sum % 10;
+            res[v_shift-h_shift] = sum + '0';
+            v_shift--;
+        }
+
+        if(carry>0){
+            int c = res[v_shift-h_shift] - '0';
+            c = c + carry;
+            res[v_shift-h_shift] = c + '0';
+        }
+
+        h_shift++;
+    }
+    res[res_len] = '\0';
+
+    //removing extra zeros from the result string
+    char *t1, *t2;
+    t1 = stripZeros(res);
+    t2 = res;
+    res = t1;
+
+    //free up any extra allocated memory
+    //t2 points to he result which might have preceeding zeros, hence its memory has to be freed
+    free(t2);
+    //the original intal1 and intal2 are unaltered and not ducplicated
 
     return res;
 }
