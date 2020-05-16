@@ -299,7 +299,6 @@ char* intal_multiply(const char* intal1, const char* intal2){
 char* intal_mod(const char* intal1, const char* intal2){
     char *divident, *divisor, *t1, *t2;
     divident = strdup(intal1);
-    divisor = strdup(intal2);
 
     int iter = 0;   //value varies between 0 and 1
 
