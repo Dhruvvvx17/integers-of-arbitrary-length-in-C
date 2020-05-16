@@ -152,29 +152,29 @@ int main(int argc, char const *argv[]) {
 		free(result1);
 	}
 
-	// result1 = intal_fibonacci(3);
-	// if(!result1) {
-	// 	printf("Test intal_fibonacci FAILED.\n");
-	// } else {
-	// 	if(0 == strcmp(result1, "2")) {
-	// 		printf("Test intal_fibonacci PASSED\n");
-	// 	} else {
-	// 		printf("Test intal_fibonacci FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, "2");
-	// 	}
-	// 	free(result1);
-	// }
+	result1 = intal_fibonacci(3);
+	if(!result1) {
+		printf("Test intal_fibonacci FAILED.\n");
+	} else {
+		if(0 == strcmp(result1, "2")) {
+			printf("Test intal_fibonacci PASSED\n");
+		} else {
+			printf("Test intal_fibonacci FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, "2");
+		}
+		free(result1);
+	}
 
-	// result1 = intal_fibonacci(1000);
-	// if(!result1) {
-	// 	printf("Test intal_fibonacci FAILED.\n");
-	// } else {
-	// 	if(0 == strcmp(result1, "43466557686937456435688527675040625802564660517371780402481729089536555417949051890403879840079255169295922593080322634775209689623239873322471161642996440906533187938298969649928516003704476137795166849228875")) {
-	// 		printf("Test intal_fibonacci PASSED\n");
-	// 	} else {
-	// 		printf("Test intal_fibonacci FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, "43466557686937456435688527675040625802564660517371780402481729089536555417949051890403879840079255169295922593080322634775209689623239873322471161642996440906533187938298969649928516003704476137795166849228875");
-	// 	}
-	// 	free(result1);
-	// }
+	result1 = intal_fibonacci(1000);
+	if(!result1) {
+		printf("Test intal_fibonacci FAILED.\n");
+	} else {
+		if(0 == strcmp(result1, "43466557686937456435688527675040625802564660517371780402481729089536555417949051890403879840079255169295922593080322634775209689623239873322471161642996440906533187938298969649928516003704476137795166849228875")) {
+			printf("Test intal_fibonacci PASSED\n");
+		} else {
+			printf("Test intal_fibonacci FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, "43466557686937456435688527675040625802564660517371780402481729089536555417949051890403879840079255169295922593080322634775209689623239873322471161642996440906533187938298969649928516003704476137795166849228875");
+		}
+		free(result1);
+	}
 
 	// result1 = intal_factorial(30);
 	// if(!result1) {

@@ -408,3 +408,40 @@ static char* compute_gcd(char* n1, char* n2){
     free(t);
     return res;
 }
+
+
+// 8. INTAL_FIBONACCI: Function to find the nth fibonacci number
+char* intal_fibonacci(unsigned int n){
+    char *prev_2, *prev_1, *res, *t;
+    
+    prev_2 = (char*)malloc(sizeof(char)*2);
+    prev_2[0] = '0';
+    prev_2[1] = '\0';
+
+    if(n==0)
+        return prev_2;
+
+
+    prev_1 = (char*)malloc(sizeof(char)*2);
+    prev_1[0] = '1';
+    prev_1[1] = '\0';
+
+    if(n==1)
+        return prev_1;
+
+    int i = 2;
+    while(i<=n){
+        res = intal_add(prev_2,prev_1);
+        t = prev_2;
+        prev_2 = prev_1;
+        prev_1 = res;
+        free(t);
+        i+=1;
+    }
+
+    //free up any extra allocated memory
+    free(prev_2);
+    //cant free prev1 becuase it points to res
+
+    return res;
+}
