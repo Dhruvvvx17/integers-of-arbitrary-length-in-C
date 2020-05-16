@@ -3,13 +3,13 @@
 #include<string.h>
 #include "intal.h"
 
-// Function declarations
-char* padding(const char* intalTemp, int zeros, int new_length);
-char* stripZeros(const char* intalTemp);
+// Helper Function declarations
+static char* padding(const char* intalTemp, int zeros, int new_length);
+static char* stripZeros(const char* intalTemp);
 
 
 // Padding the given string with prefix zeros to make the new length equal to the given length
-char* padding(const char* intalTemp, int zeros, int new_length){
+static char* padding(const char* intalTemp, int zeros, int new_length){
     char *res;
     res = (char*)malloc(sizeof(char)*new_length+1);
     int k=0;
@@ -26,7 +26,7 @@ char* padding(const char* intalTemp, int zeros, int new_length){
 }
 
 // Removing any prefix zeros from the given string
-char* stripZeros(const char* intalTemp){
+static char* stripZeros(const char* intalTemp){
     int initial_zeros = 0;
     for(int i=0; i<strlen(intalTemp); i++){
         if(intalTemp[i]=='0')
@@ -48,6 +48,7 @@ char* stripZeros(const char* intalTemp){
 }
 
 
+// 1. INTAL_ADD: Function to add two intal numbers
 char* intal_add(const char* intal1, const char* intal2){
     int l1, l2, diff_len, res_len;
     l1 = strlen(intal1);    
@@ -110,6 +111,7 @@ char* intal_add(const char* intal1, const char* intal2){
 }
 
 
+// 2. INTAL_COMPARE: Function to compare two intal numbers
 int intal_compare(const char* intal1, const char* intal2){
     int l1, l2;
     l1 = strlen(intal1);
@@ -131,6 +133,7 @@ int intal_compare(const char* intal1, const char* intal2){
 }
 
 
+// 3. INTAL_DIFF: Function to subtract the larger intal number from the smaller intal number
 char* intal_diff(const char* intal1, const char* intal2){
     int l1, l2, cmp, diff_len, res_len;
     l1 = strlen(intal1);
