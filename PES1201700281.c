@@ -98,11 +98,11 @@ char* intal_add(const char* intal1, const char* intal2){
     t2 = res;
     res = t1;
 
-    //freeing any extra allocated memory
+    //free up any extra allocated memory
     //t2 points to the result which might have preceeding zeros, hence its memmory has to be freed
     free(t2);
     //the original intal1 and intal2 are unaltered
-    // either of intal1 or intal2 might be padded with 0s, the other is copied by strdup() 
+    //either of intal1 or intal2 might be padded with 0s, the other is copied by strdup() 
     free(new_intal1);       
     free(new_intal2);       
     
@@ -138,29 +138,45 @@ char* intal_diff(const char* intal1, const char* intal2){
 
     diff_len = (l1>l2) ? (l1-l2) : (l2-l1);
 
+    char* new_intal1, *new_intal2;      //variables to create copies of intal1 and intal2
+
     if(l1>l2){
-        intal2 = padding(intal2,diff_len,l1);
+        new_intal1 = strdup(intal1);
+        new_intal2 = padding(intal2,diff_len,l1);
         res_len = l1;
         l2 = l1;
     }
     else if(l2>l1){
-        intal1 = padding(intal1,diff_len,l2);
+        new_intal1 = padding(intal1,diff_len,l2);
+        new_intal2 = strdup(intal2);
         res_len = l2;
         l1 = l2;
     }
+    else{
+        new_intal1 = strdup(intal1);
+        new_intal2 = strdup(intal2);
+        res_len = l1;
+    }
 
-    cmp = intal_compare(intal1,intal2);
+    //value comparison, lengths are same after padding 
+    cmp = intal_compare(new_intal1,new_intal2);
     if(cmp == -1){
-        const char *temp;
-        temp = intal1;
-        intal1 = intal2;
-        intal2 = temp;
+        //swapping to maintain the order of new_intal1 having the larger value number
+        char *temp;
+        temp = new_intal1;
+        new_intal1 = new_intal2;
+        new_intal2 = temp;
     }
     else if(cmp == 0){
+        //if both are equal in length and value, then difference is 0. Hence, returning null terminated 0.
         char *res;
         res = (char*)malloc(sizeof(char)*(2));
         res[0] = '0';
         res[1] = '\0';
+        // free up any extra memory allocated
+        // new_intal1 and new_intal2 are copies of original intal's, have to be freed 
+        free(new_intal1);
+        free(new_intal2);
         return res;
     }
 
@@ -170,8 +186,8 @@ char* intal_diff(const char* intal1, const char* intal2){
     int i, j, d1, d2, diff, carry=0, k=res_len-1;
 
     for(i=l1-1,j=l2-1; i>=0; i--,j--){
-        d1 = intal1[i] - '0';
-        d2 = intal2[i] - '0';
+        d1 = new_intal1[i] - '0';
+        d2 = new_intal2[i] - '0';
         diff = d1 - d2 - carry;
         if(diff<0){
             diff = diff + 10;
@@ -186,11 +202,18 @@ char* intal_diff(const char* intal1, const char* intal2){
     }
     res[res_len] = '\0';
 
-    //removing extra zeros from the result string, freeing any extra allocated memory
+    //removing extra zeros from the result string
     char *t1, *t2;
     t1 = stripZeros(res);
     t2 = res;
     res = t1;
+
+    //t2 points to the result which might have preceeding zeros, hence its memmory has to be freed
     free(t2);
+    //the original intal1 and intal2 are unaltered
+    //either of intal1 or intal2 might be padded with 0s, the other is copied by strdup() 
+    free(new_intal1);       
+    free(new_intal2);       
+
     return res;
 }
