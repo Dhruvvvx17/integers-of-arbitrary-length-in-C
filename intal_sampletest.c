@@ -176,29 +176,29 @@ int main(int argc, char const *argv[]) {
 		free(result1);
 	}
 
-	// result1 = intal_factorial(30);
-	// if(!result1) {
-	// 	printf("Test intal_factorial FAILED.\n");
-	// } else {
-	// 	if(0 == strcmp(result1, a[6])) {
-	// 		printf("Test intal_factorial PASSED\n");
-	// 	} else {
-	// 		printf("Test intal_factorial FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, a[6]);
-	// 	}
-	// 	free(result1);
-	// }
+	result1 = intal_factorial(30);
+	if(!result1) {
+		printf("Test intal_factorial FAILED.\n");
+	} else {
+		if(0 == strcmp(result1, a[6])) {
+			printf("Test intal_factorial PASSED\n");
+		} else {
+			printf("Test intal_factorial FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, a[6]);
+		}
+		free(result1);
+	}
 
-	// result1 = intal_factorial(100);
-	// if(!result1) {
-	// 	printf("Test intal_factorial FAILED.\n");
-	// } else {
-	// 	if(0 == strcmp(result1, "93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000")) {
-	// 		printf("Test intal_factorial PASSED\n");
-	// 	} else {
-	// 		printf("Test intal_factorial FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, "93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000");
-	// 	}
-	// 	free(result1);
-	// }
+	result1 = intal_factorial(100);
+	if(!result1) {
+		printf("Test intal_factorial FAILED.\n");
+	} else {
+		if(0 == strcmp(result1, "93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000")) {
+			printf("Test intal_factorial PASSED\n");
+		} else {
+			printf("Test intal_factorial FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, "93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000");
+		}
+		free(result1);
+	}
 
 	// result1 = intal_bincoeff(10, 8);
 	// if(!result1) {

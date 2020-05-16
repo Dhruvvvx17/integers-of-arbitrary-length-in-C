@@ -445,3 +445,51 @@ char* intal_fibonacci(unsigned int n){
 
     return res;
 }
+
+
+// 9. INTAL_FACTORIAL: Factorial to find factorial of n (iterative solution)
+char* intal_factorial(unsigned int n){
+    //border case of n=0 or n=1, result=1
+    if(n==0 || n==1){
+        char *res = (char*)malloc(sizeof(char)*2);
+        res[0] = '1';
+        res[1] = '\0';
+        return res;
+    }
+
+    int i = 2;
+    char *t1, *t2, *res, *add_one, *next_num;
+
+    //a constant '1' to add to the previous number, to obtain next intal number
+    add_one = (char*)malloc(sizeof(char)*2);
+    add_one[0] = '1';
+    add_one[1] = '\0';
+
+    //the next number to be multiplied in to the resulting factorial
+    next_num = (char*)malloc(sizeof(char)*2);
+    next_num[0] = '1';
+    next_num[1] = '\0';
+
+    //actual factorial result over the n iterations
+    res = (char*)malloc(sizeof(char)*2);
+    res[0] = '1';
+    res[1] = '\0';
+
+    while(i<=n){
+        t1 = intal_add(next_num,add_one);
+        t2 = next_num;
+        next_num = t1;
+        free(t2);       // free up the memory occupied by previous next_num
+        
+        t1 = intal_multiply(res,next_num);
+        t2 = res;
+        res = t1;
+        free(t2);       // free up the memory occupied by previous res
+        i+=1;
+    }
+
+    free(add_one);
+    free(next_num);
+
+    return res;
+}
