@@ -26,7 +26,6 @@ char* padding(const char* intalTemp, int zeros, int new_length){
 
 
 char* stripZeros(const char* intalTemp){
-
     int initial_zeros = 0;
     for(int i=0; i<strlen(intalTemp); i++){
         if(intalTemp[i]=='0')
@@ -47,21 +46,13 @@ char* stripZeros(const char* intalTemp){
     return res;
 }
 
+
 char* intal_add(const char* intal1, const char* intal2){
-
-    // printf("Intal1: %s\n",intal1);    
-    // printf("\tLength: %d\n",strlen(intal1));
-
-    // printf("Intal2: %s\n",intal2);
-    // printf("\tLength: %d\n",strlen(intal2));
-
     int l1, l2, diff_len, res_len;
     l1 = strlen(intal1);    
     l2 = strlen(intal2);    
 
     diff_len = (l1>l2) ? (l1-l2) : (l2-l1);
-
-    // printf("DIFF %d\n",diff_len);
 
     if(l1>l2){
         intal2 = padding(intal2,diff_len,l1);
@@ -92,13 +83,27 @@ char* intal_add(const char* intal1, const char* intal2){
     res[0] = carry + '0';
     res[res_len+1] = '\0';
 
-    // printf("Temp Sum: %s\n",res);
-    // printf("Temp len: %d\n",strlen(res));
-
     res = stripZeros(res);
-
-    // printf("Temp Sum after zeros are stripped: %s\n",res);
-    // printf("Temp len: %d\n",strlen(res));
-
     return res;    
+}
+
+
+int intal_compare(const char* intal1, const char* intal2){
+    int l1, l2;
+    l1 = strlen(intal1);
+    l2 = strlen(intal2);
+
+    if(l1>l2)
+        return 1;
+
+    if(l2>l1)
+        return -1;
+
+    for(int i=0; i<l1; i++){
+        if(intal1[i]>intal2[i])
+            return 1;
+        if(intal2[i]>intal1[i])
+            return -1;
+    }
+    return 0;
 }
