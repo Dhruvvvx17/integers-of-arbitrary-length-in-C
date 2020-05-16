@@ -348,3 +348,29 @@ char* intal_mod(const char* intal1, const char* intal2){
 
     return divident;  
 }
+
+
+// 6. INTAL_POW: Function to find intal1 ^ n
+char* intal_pow(const char* intal1, unsigned int n){
+    if(n==0){
+        char *res = (char*)malloc(sizeof(char)*2);
+        res[0] = '1';
+        res[1] = '\0';
+        return res;
+    }
+    char *temp, *res;
+    temp = intal_pow(intal1,n/2);   //recursive approach
+    //if power is even, multiply subproblems directly
+    if(n%2==0){
+        res = intal_multiply(temp,temp);
+        free(temp);
+        return res;
+    }
+    //if power is odd, multiply subproblems with the original value
+    else{
+        temp = intal_multiply(temp,temp);
+        res = intal_multiply(intal1,temp);
+        free(temp);
+        return res;
+    }
+}

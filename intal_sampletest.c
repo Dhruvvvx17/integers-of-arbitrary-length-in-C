@@ -104,41 +104,41 @@ int main(int argc, char const *argv[]) {
 		free(result1);
 	}
 
-	// result1 = intal_pow(a[5], 3);
-	// if(!result1) {
-	// 	printf("Test intal_pow FAILED.\n");
-	// } else {
-	// 	if(0 == strcmp(result1, "1728")) {
-	// 		printf("Test intal_pow PASSED\n");
-	// 	} else {
-	// 		printf("Test intal_pow FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, "1728");
-	// 	}
-	// 	free(result1);
-	// }
+	result1 = intal_pow(a[5], 3);
+	if(!result1) {
+		printf("Test intal_pow FAILED.\n");
+	} else {
+		if(0 == strcmp(result1, "1728")) {
+			printf("Test intal_pow PASSED\n");
+		} else {
+			printf("Test intal_pow FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, "1728");
+		}
+		free(result1);
+	}
 
-	// result1 = intal_pow("10", 999);
-	// if(!result1) {
-	// 	printf("Test intal_pow FAILED.\n");
-	// } else {
-	// 	if(0 == strcmp(result1, a[10])) {
-	// 		printf("Test intal_pow PASSED\n");
-	// 	} else {
-	// 		printf("Test intal_pow FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, a[10]);
-	// 	}
-	// 	free(result1);
-	// }
+	result1 = intal_pow("10", 999);
+	if(!result1) {
+		printf("Test intal_pow FAILED.\n");
+	} else {
+		if(0 == strcmp(result1, a[10])) {
+			printf("Test intal_pow PASSED\n");
+		} else {
+			printf("Test intal_pow FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, a[10]);
+		}
+		free(result1);
+	}
 
-	// result1 = intal_pow("2", 3000);
-	// if(!result1) {
-	// 	printf("Test intal_pow FAILED.\n");
-	// } else {
-	// 	if(0 == strcmp(result1, a[11])) {
-	// 		printf("Test intal_pow PASSED\n");
-	// 	} else {
-	// 		printf("Test intal_pow FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, a[11]);
-	// 	}
-	// 	free(result1);
-	// }
+	result1 = intal_pow("2", 3000);
+	if(!result1) {
+		printf("Test intal_pow FAILED.\n");
+	} else {
+		if(0 == strcmp(result1, a[11])) {
+			printf("Test intal_pow PASSED\n");
+		} else {
+			printf("Test intal_pow FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, a[11]);
+		}
+		free(result1);
+	}
 
 	// result1 = intal_gcd(a[0], a[5]);
 	// if(!result1) {
