@@ -574,3 +574,22 @@ int intal_min(char **arr, int n){
     //no memory is allocated at all, hence nothing to free
     return min_index;
 }
+
+
+// 13. INTAL_SEARCH: A linear search implementation to search for the given key in the array
+int intal_search(char **arr, int n, const char* key){
+
+    int res = -1, cmp;
+    char *t;
+
+    for(int i=0; i<n; i++){
+        t = arr[i];
+        cmp = intal_compare(t,key);
+        if(cmp==0){
+            res = i;
+            break;
+        }
+    }
+    //no memory is allocated at all, hence nothing to free
+    return res;
+}

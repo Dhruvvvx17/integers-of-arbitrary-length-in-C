@@ -238,12 +238,12 @@ int main(int argc, char const *argv[]) {
 		printf("Test intal_min FAILED.\nYour answer: %d\nExpected answer: %d\n", index1, 2);
 	}
 
-	// index1 = intal_search(a, 10, a[7]);
-	// if(6 == index1) {
-	// 	printf("Test intal_search PASSED\n");
-	// } else {
-	// 	printf("Test intal_search FAILED.\nYour answer: %d\nExpected answer: %d\n", index1, 6);
-	// }
+	index1 = intal_search(a, 10, a[7]);
+	if(6 == index1) {
+		printf("Test intal_search PASSED\n");
+	} else {
+		printf("Test intal_search FAILED.\nYour answer: %d\nExpected answer: %d\n", index1, 6);
+	}
 
 	// intal_sort(a, 10);
 	// index1 = intal_binsearch(a, 10, "3");
