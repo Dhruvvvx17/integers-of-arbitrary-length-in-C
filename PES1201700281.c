@@ -7,6 +7,7 @@
 static char* padding(const char* intalTemp, int zeros, int new_length);
 static char* stripZeros(const char* intalTemp);
 static char* compute_gcd(char* n1, char* n2);
+static int getMin(unsigned int a, unsigned int b);
 
 // Padding the given string with prefix zeros to make the new length equal to the given length
 static char* padding(const char* intalTemp, int zeros, int new_length){
@@ -492,4 +493,44 @@ char* intal_factorial(unsigned int n){
     free(next_num);
 
     return res;
+}
+
+
+// 10. INTAL_BINCOEFF: Function to compute the binary coefficient of C(n,k)
+char* intal_bincoeff(unsigned int n, unsigned int k){
+    //string array to store coefficients, based on pascals identity
+
+    //as C(n,k) is same as C(n,n-k). The reduces the computations for k values greater than n/2
+    //the max computations will be for k==n/2
+    if(k>n/2)
+        k = n-k;
+
+    char **array = (char**)malloc(sizeof(char*)*(k+1));
+    //array of size k, initally all values 0
+    for(int i=0; i<=k; i++){
+        array[i] = (char*)malloc(sizeof(char*)*1001);
+        strcpy(array[i], "0");
+    }
+    strcpy(array[0],"1");     //C(n,0) = 1
+
+    char *t, *res;
+
+    for(int i=1; i<=n; i++){
+        for(int j=getMin(i,k); j>0; j--){
+            t = intal_add(array[j], array[j-1]);
+            strcpy(array[j],t);
+            free(t);
+        }
+    }
+
+    res = strdup(array[k]);
+    for(int i=0; i<=k; i++){
+        free(array[i]);
+    }
+    free(array);
+    return res;
+}
+
+static int getMin(unsigned int a, unsigned int b){
+    return (a>=b) ? b : a;
 }

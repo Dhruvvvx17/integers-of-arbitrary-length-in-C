@@ -200,29 +200,29 @@ int main(int argc, char const *argv[]) {
 		free(result1);
 	}
 
-	// result1 = intal_bincoeff(10, 8);
-	// if(!result1) {
-	// 	printf("Test intal_bincoeff FAILED.\n");
-	// } else {
-	// 	if(0 == strcmp(result1, "45")) {
-	// 		printf("Test intal_bincoeff PASSED\n");
-	// 	} else {
-	// 		printf("Test intal_bincoeff FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, "45");
-	// 	}
-	// 	free(result1);
-	// }
+	result1 = intal_bincoeff(10, 8);
+	if(!result1) {
+		printf("Test intal_bincoeff FAILED.\n");
+	} else {
+		if(0 == strcmp(result1, "45")) {
+			printf("Test intal_bincoeff PASSED\n");
+		} else {
+			printf("Test intal_bincoeff FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, "45");
+		}
+		free(result1);
+	}
 
-	// result1 = intal_bincoeff(1000, 900);
-	// if(!result1) {
-	// 	printf("Test intal_bincoeff FAILED.\n");
-	// } else {
-	// 	if(0 == strcmp(result1, "63850511926305130236698511142022274281262900693853331776286816221524376994750901948920974351797699894319420811933446197797592213357065053890")) {
-	// 		printf("Test intal_bincoeff PASSED\n");
-	// 	} else {
-	// 		printf("Test intal_bincoeff FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, "63850511926305130236698511142022274281262900693853331776286816221524376994750901948920974351797699894319420811933446197797592213357065053890");
-	// 	}
-	// 	free(result1);
-	// }
+	result1 = intal_bincoeff(1000, 900);
+	if(!result1) {
+		printf("Test intal_bincoeff FAILED.\n");
+	} else {
+		if(0 == strcmp(result1, "63850511926305130236698511142022274281262900693853331776286816221524376994750901948920974351797699894319420811933446197797592213357065053890")) {
+			printf("Test intal_bincoeff PASSED\n");
+		} else {
+			printf("Test intal_bincoeff FAILED.\nYour answer: %s\nExpected answer: %s\n", result1, "63850511926305130236698511142022274281262900693853331776286816221524376994750901948920974351797699894319420811933446197797592213357065053890");
+		}
+		free(result1);
+	}
 
 	// index1 = intal_max(a, 10);
 	// if(6 == index1) {
