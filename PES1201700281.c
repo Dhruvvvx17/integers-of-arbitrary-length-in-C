@@ -534,3 +534,23 @@ char* intal_bincoeff(unsigned int n, unsigned int k){
 static int getMin(unsigned int a, unsigned int b){
     return (a>=b) ? b : a;
 }
+
+
+// 11. INTAL_MAX: Function to find the max value intal in the given array
+int intal_max(char **arr, int n){
+
+    int max_index = 0, cmp;
+    char *max_intal = arr[0], *t;
+
+    for(int i=1; i<n; i++){
+        t = arr[i];
+        cmp = intal_compare(t,max_intal);
+        //if t > max_intal then cmp==1 & t is the new max_intal
+        if(cmp==1){
+            strcpy(max_intal,t);
+            max_index = i;
+        }
+    }
+    //no memory is allocated at all, hence nothing to free
+    return max_index;
+}

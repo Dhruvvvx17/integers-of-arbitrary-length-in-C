@@ -224,12 +224,12 @@ int main(int argc, char const *argv[]) {
 		free(result1);
 	}
 
-	// index1 = intal_max(a, 10);
-	// if(6 == index1) {
-	// 	printf("Test intal_max PASSED\n");
-	// } else {
-	// 	printf("Test intal_max FAILED.\nYour answer: %d\nExpected answer: %d\n", index1, 6);
-	// }
+	index1 = intal_max(a, 10);
+	if(6 == index1) {
+		printf("Test intal_max PASSED\n");
+	} else {
+		printf("Test intal_max FAILED.\nYour answer: %d\nExpected answer: %d\n", index1, 6);
+	}
 
 	// index1 = intal_min(a, 10);
 	// if(2 == index1) {
