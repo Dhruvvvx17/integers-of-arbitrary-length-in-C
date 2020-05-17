@@ -554,3 +554,23 @@ int intal_max(char **arr, int n){
     //no memory is allocated at all, hence nothing to free
     return max_index;
 }
+
+
+// 12. INTAL_MIN: Function to find the min value intal in the given array
+int intal_min(char **arr, int n){
+
+    int min_index = 0, cmp;
+    char *min_intal = arr[0], *t;
+
+    for(int i=1; i<n; i++){
+        t = arr[i];
+        cmp = intal_compare(t,min_intal);
+        //if t < min_intal then cmp==-1 & t is the new min_intal
+        if(cmp==-1){
+            strcpy(min_intal,t);
+            min_index = i;
+        }
+    }
+    //no memory is allocated at all, hence nothing to free
+    return min_index;
+}
