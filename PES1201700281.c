@@ -8,8 +8,8 @@ static char* padding(const char* intalTemp, int zeros, int new_length);
 static char* stripZeros(const char* intalTemp);
 static char* compute_gcd(char* n1, char* n2);
 static int getMin(unsigned int a, unsigned int b);
-// void merge(char **arr, int n, int m);
-// void mergeSort(char **arr, int n);
+static void merge(char **arr, int n, int m);
+static void mergeSort(char **arr, int n);
 
 // Padding the given string with prefix zeros to make the new length equal to the given length
 static char* padding(const char* intalTemp, int zeros, int new_length){
@@ -606,74 +606,60 @@ int intal_search(char **arr, int n, const char* key){
 
 
 // 14. INTAL_SORT: A O(nlogn) implementation soring algorithm to sort the array of intal's
-// void intal_sort(char **arr, int n){
-//     printf("ORIGINAl\n");
-//     for(int i=0;i<12;i++){
-// 		printf("%d---%s\n",i,arr[i]);
-// 	}
+void intal_sort(char **arr, int n){
+    mergeSort(arr, n);
+}
 
-//     printf("\n\n\n");
+static void mergeSort(char **arr, int n){    
+    if(n<=1)
+        return;
 
-//     mergeSort(arr, n);
+    int m = n/2;
 
+    mergeSort(arr, m);
+    mergeSort(arr+m, n-m);
 
-//     printf("SORTED\n");
-//     for(int i=0;i<12;i++){
-// 		printf("%d---%s\n",i,arr[i]);
-// 	}
+    merge(arr, n, m);
+}
 
-// }
-
-// void mergeSort(char **arr, int n){    
-//     if(n<=1)
-//         return;
-
-//     int m = n/2;
-
-//     mergeSort(arr, m);
-//     mergeSort(arr+m, n-m);
-
-//     merge(arr, n, m);
-// }
-
-// void merge(char **arr, int n, int m){
-//     int i=0, j=m, k=0;
+static void merge(char **arr, int n, int m){
+    int i=0, j=m, k=0;
     
-//     char **temp;
-//     temp = (char**)malloc(sizeof(char*)*n);
-//     for(int x=0; x<n; x++){
-//         temp[x] = (char*)malloc(sizeof(char)*1001);
-//         strcpy(temp[x],"0");
-//     }
+    char **temp;
+    temp = (char**)malloc(sizeof(char*)*n);
+    for(int x=0; x<n; x++){
+        temp[x] = (char*)malloc(sizeof(char)*1001);
+        strcpy(temp[x],"0");
+    }
 
-//     while(i<m && j<n){
-//         if(intal_compare(arr[i],arr[j])!=1){
-//             strcpy(temp[k],arr[i]);
-//             i+=1;
-//         }
-//         else{
-//             strcpy(temp[k],arr[j]);
-//             j+=1;
-//         }
-//         k+=1;
-//     }
+    while(i<m && j<n){
+        if(intal_compare(arr[i],arr[j])!=1){
+            strcpy(temp[k],arr[i]);
+            i+=1;
+        }
+        else{
+            strcpy(temp[k],arr[j]);
+            j+=1;
+        }
+        k+=1;
+    }
 
-//     if(j==n){
-//         while(i<m){
-//             strcpy(temp[k],arr[i]);
-//             i+=1; k+=1;
-//         }        
-//     }
-//     else{
-//         while(j<n){
-//             strcpy(temp[k],arr[j]);
-//             j+=1; k+=1;
-//         }
-//     }
+    if(j==n){
+        while(i<m){
+            strcpy(temp[k],arr[i]);
+            i+=1; k+=1;
+        }        
+    }
+    else{
+        while(j<n){
+            strcpy(temp[k],arr[j]);
+            j+=1; k+=1;
+        }
+    }
 
-//     for(int x=0; x<n; x++){
-//         strcpy(arr[x],temp[x]);
-//         free(temp[x]);
-//     }
-//     free(temp);
-// }
+    for(int x=0; x<n; x++){
+        strcpy(arr[x],temp[x]);
+        free(temp[x]);
+    }
+    free(temp);
+}

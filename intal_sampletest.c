@@ -238,9 +238,6 @@ int main(int argc, char const *argv[]) {
 		free(result1);
 	}
 
-			for(int i=0;i<12;i++){
-		printf("---%s\n",a[i]);
-	}
 
 	index1 = intal_max(a, 10);
 	if(6 == index1) {
@@ -263,7 +260,7 @@ int main(int argc, char const *argv[]) {
 		printf("Test intal_search FAILED.\nYour answer: %d\nExpected answer: %d\n", index1, 6);
 	}
 
-	// intal_sort(a, 10);
+	intal_sort(a, 10);
 	// index1 = intal_binsearch(a, 10, "3");
 	// if(1 == index1) {
 	// 	printf("Test intal_binsearch and probably intal_sort PASSED\n");
