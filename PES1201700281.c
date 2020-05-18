@@ -8,6 +8,8 @@ static char* padding(const char* intalTemp, int zeros, int new_length);
 static char* stripZeros(const char* intalTemp);
 static char* compute_gcd(char* n1, char* n2);
 static int getMin(unsigned int a, unsigned int b);
+// void merge(char **arr, int n, int m);
+// void mergeSort(char **arr, int n);
 
 // Padding the given string with prefix zeros to make the new length equal to the given length
 static char* padding(const char* intalTemp, int zeros, int new_length){
@@ -125,7 +127,7 @@ char* intal_add(const char* intal1, const char* intal2){
     //either of intal1 or intal2 might be padded with 0s, the other is copied by strdup() 
     free(new_intal1);       
     free(new_intal2);       
-    
+
     return res;    
 }
 
@@ -540,7 +542,10 @@ static int getMin(unsigned int a, unsigned int b){
 int intal_max(char **arr, int n){
 
     int max_index = 0, cmp;
-    char *max_intal = arr[0], *t;
+    char *max_intal, *t;
+
+    max_intal = (char*)malloc(sizeof(char)*1001);
+    strcpy(max_intal,arr[0]);
 
     for(int i=1; i<n; i++){
         t = arr[i];
@@ -551,7 +556,8 @@ int intal_max(char **arr, int n){
             max_index = i;
         }
     }
-    //no memory is allocated at all, hence nothing to free
+    //free up memory
+    free(max_intal);
     return max_index;
 }
 
@@ -560,7 +566,10 @@ int intal_max(char **arr, int n){
 int intal_min(char **arr, int n){
 
     int min_index = 0, cmp;
-    char *min_intal = arr[0], *t;
+    char *min_intal, *t;
+
+    min_intal = (char*)malloc(sizeof(char)*1001);
+    strcpy(min_intal,arr[0]);
 
     for(int i=1; i<n; i++){
         t = arr[i];
@@ -571,7 +580,8 @@ int intal_min(char **arr, int n){
             min_index = i;
         }
     }
-    //no memory is allocated at all, hence nothing to free
+    //free up memory
+    free(min_intal);
     return min_index;
 }
 
@@ -593,3 +603,77 @@ int intal_search(char **arr, int n, const char* key){
     //no memory is allocated at all, hence nothing to free
     return res;
 }
+
+
+// 14. INTAL_SORT: A O(nlogn) implementation soring algorithm to sort the array of intal's
+// void intal_sort(char **arr, int n){
+//     printf("ORIGINAl\n");
+//     for(int i=0;i<12;i++){
+// 		printf("%d---%s\n",i,arr[i]);
+// 	}
+
+//     printf("\n\n\n");
+
+//     mergeSort(arr, n);
+
+
+//     printf("SORTED\n");
+//     for(int i=0;i<12;i++){
+// 		printf("%d---%s\n",i,arr[i]);
+// 	}
+
+// }
+
+// void mergeSort(char **arr, int n){    
+//     if(n<=1)
+//         return;
+
+//     int m = n/2;
+
+//     mergeSort(arr, m);
+//     mergeSort(arr+m, n-m);
+
+//     merge(arr, n, m);
+// }
+
+// void merge(char **arr, int n, int m){
+//     int i=0, j=m, k=0;
+    
+//     char **temp;
+//     temp = (char**)malloc(sizeof(char*)*n);
+//     for(int x=0; x<n; x++){
+//         temp[x] = (char*)malloc(sizeof(char)*1001);
+//         strcpy(temp[x],"0");
+//     }
+
+//     while(i<m && j<n){
+//         if(intal_compare(arr[i],arr[j])!=1){
+//             strcpy(temp[k],arr[i]);
+//             i+=1;
+//         }
+//         else{
+//             strcpy(temp[k],arr[j]);
+//             j+=1;
+//         }
+//         k+=1;
+//     }
+
+//     if(j==n){
+//         while(i<m){
+//             strcpy(temp[k],arr[i]);
+//             i+=1; k+=1;
+//         }        
+//     }
+//     else{
+//         while(j<n){
+//             strcpy(temp[k],arr[j]);
+//             j+=1; k+=1;
+//         }
+//     }
+
+//     for(int x=0; x<n; x++){
+//         strcpy(arr[x],temp[x]);
+//         free(temp[x]);
+//     }
+//     free(temp);
+// }
