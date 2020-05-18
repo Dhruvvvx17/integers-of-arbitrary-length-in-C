@@ -10,6 +10,7 @@ static char* compute_gcd(char* n1, char* n2);
 static int getMin(unsigned int a, unsigned int b);
 static void merge(char **arr, int n, int m);
 static void mergeSort(char **arr, int n);
+static int custom_binSearch(char **arr, int l, int r, char *key);
 
 // Padding the given string with prefix zeros to make the new length equal to the given length
 static char* padding(const char* intalTemp, int zeros, int new_length){
@@ -663,4 +664,32 @@ static void merge(char **arr, int n, int m){
         free(temp[x]);
     }
     free(temp);
+}
+
+
+// 15. INTAL_BINSEARCH: A O(logn) implementation to search for the given key in the array 
+int intal_binsearch(char **arr, int n, const char* key){
+    char *k = (char*)malloc(sizeof(char)*1001);
+    strcpy(k,key);
+    int res;
+    res = custom_binSearch(arr, 0, n, k);
+    free(k);
+    return res;
+}
+
+// binary search helper function, actual binary search logic
+static int custom_binSearch(char **arr, int l, int r, char *key){
+    if(r-l+1 < 1){
+        return -1;
+    }
+    int m = (l+r)/2;
+
+    if(intal_compare(key,arr[m])==0)
+        return m;
+
+    else if(intal_compare(key,arr[m])==-1)
+        return custom_binSearch(arr, l, m-1, key);
+    
+    else
+        return custom_binSearch(arr, m+1, r, key);
 }

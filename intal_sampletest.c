@@ -260,13 +260,19 @@ int main(int argc, char const *argv[]) {
 		printf("Test intal_search FAILED.\nYour answer: %d\nExpected answer: %d\n", index1, 6);
 	}
 
+
 	intal_sort(a, 10);
-	// index1 = intal_binsearch(a, 10, "3");
-	// if(1 == index1) {
-	// 	printf("Test intal_binsearch and probably intal_sort PASSED\n");
-	// } else {
-	// 	printf("Test intal_binsearch and probably intal_sort FAILED.\nYour answer: %d\nExpected answer: %d\n", index1, 1);
+	// to test sort
+	// for(int i=0;i<10;i++){
+	// 	printf("%d -- %s\n",i,a[i]);
 	// }
+
+	index1 = intal_binsearch(a, 10, "3");
+	if(1 == index1) {
+		printf("Test intal_binsearch and probably intal_sort PASSED\n");
+	} else {
+		printf("Test intal_binsearch and probably intal_sort FAILED.\nYour answer: %d\nExpected answer: %d\n", index1, 1);
+	}
 
 	// result1 = coin_row_problem(a+1, 2);
 	// if(0 == strcmp("12", result1)) {
