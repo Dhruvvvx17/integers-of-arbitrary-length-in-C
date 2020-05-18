@@ -615,10 +615,9 @@ static void mergeSort(char **arr, int n){
         return;
 
     int m = n/2;
-
+    //recursively call mergeSort until 1 element is left in list
     mergeSort(arr, m);
     mergeSort(arr+m, n-m);
-
     merge(arr, n, m);
 }
 
@@ -644,6 +643,7 @@ static void merge(char **arr, int n, int m){
         k+=1;
     }
 
+    //if any one list is exhausted, copy the other one completely
     if(j==n){
         while(i<m){
             strcpy(temp[k],arr[i]);
@@ -657,6 +657,7 @@ static void merge(char **arr, int n, int m){
         }
     }
 
+    //free up the temporary array
     for(int x=0; x<n; x++){
         strcpy(arr[x],temp[x]);
         free(temp[x]);
