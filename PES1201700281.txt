@@ -1,0 +1,100 @@
+Name: Dhruv Vohra
+SRN: PES1201700281
+
+MiniProject Report
+
+INTRODUCTION:
+    An Intal, short for Integers of arbitrary length are string of decimal digits (0-9) to store really large numbers that
+    cannot be stored/operated on by using the int or long int data type in C.
+    By having decimal digits stored in string format, the length of a integer is no longer an issue which opens up the possibility
+    of very large number operations.
+    For example:
+        - Factorial of 20 is the max value that can be calculated in C by using a long long int variable, however with the intal 
+          representation, factorial of even 100 was calculated efficiently.
+        - Another application includes big data processing, like addition, subtraction, multiplication of the big data and numbers 
+          generated in various data driven organizations, like the stock market, social media orgs, etc.
+
+APPROACH:
+    Following is my approach for every function implemented in the intal library I created as part of this project:
+
+    1. Addition of two intals (intal_add): 
+        The approach for intal_add function was to first apply padding on the shorter intal string, such that both intals would be of the
+        same length (l). Followed by allocating a result string (initalized with all zeros) of length l+1 as that is the max length of the 
+        resultant string.
+        Then traversing the two intals from right to left and adding the digits at every iteration along with the carry from the previous iteration.
+        the result of every iteration is divided by 10 to get the final value of that iteration digit in result string and is modded with 10 to 
+        generate the carry. Finally the the resultant string is stripped of any leading zeros and returned.  
+    
+    2. Comparison of two intals (intal_compare)
+        The approach for intal_compare was to first compare the two intals in terms of length, if one is greater than the other then straight
+        away it is also of greater value. If the two lengths are same then iteratively comparing every digit of the two intals from left to right.
+
+    3. Difference of two intals (intal_diff)
+        The approach for intal_diff was similar to that of intal_add, padding the shorter intal string as that makes the iterative operation digit-wise
+        much easier. The two intals are traversed from right to left and the borrow is added directly as 10 to the current iteration making the carry as -1
+        for the next iteration.
+        Finally the resultant string is stripped of any leading zeros and returned.
+
+    4. Product of two intals (intal_multiply)
+        The approach for intal_multiply is to multiply one digit of one intal with every digit of the other intal and in every iteration,
+        adding the current digit wise multiplication result to the appropriate position where the previously multiplied result is stored.
+        The appropriate position is obtained by using a horizontal shift and vertical shift variables.
+        An additional memory of m x n is allocated initially as that is the max length a multiplication result can have, the result is later stripped of zeros
+        and returned.
+
+    5. Mod of two intals (intal_mod)
+        The intal_mod function involved multiplying the divior by 2 until it becomes greater than the divident, once it does, the divisor is subtracted
+        from the divident and the same process continues until the divident becomes smaller than the original divison upon which again the difference 
+        between the original divisor and the divident gives the final result. The implementation takes O(logn) time.
+
+    6. First intal to the power second intal (intal_pow)
+        The intal_pow function takes a recurrsive divide and conquer approach to find subproblems (smaller power computations) to eventually obtain the result.
+
+
+    7. GCD of two intals (intal_gcd)
+        The intal_gcd function is implemented of the euclidian approach to find the gcd of two numbers, the intal_gcd inturn used the intal_mod and intal_diff 
+        functions for the computation.
+
+    8. nth fibonacci number, n is an intal (intal_fibonacci)
+        The implementation to find the nth fibonacci number is the iterative approach to keep adding the previous two numbers to obtain the next number in the 
+        series, the numbers generated in between are not stored anywhere as that are not required once used to compute the a particular next fibonacci number.
+
+    9. Factorial of an intal (intal_factorial)
+        The intal_factorial function takes the recursive approach to find the factorial.
+
+    10. binomial coefficient of nCk, result returned is intal (intal_bincoeff)
+        binomial coefficients are calculated iteratively using the pascal rule, for C(n,k) an additional space of O(k) is used to store the coefficients.
+        To compute C(1000,900) instead the value of C(1000,100) is calculated and returned which is the same and takes much lesser computation.
+
+    11. index of max intal in an unsorted array (intal_max)
+        The intal_max function is the brute force implementation of iterating through an unsorted array and comparing the current intal with the current max.
+
+    12. index of min intal in an unsorted array (intal_min)
+        The intal_min function is the brute force implementation of iterating through an unsorted array and comparing the current intal with the current min.
+
+    13. index of given intal in an unsorted array (intal_search)
+        The intal_search function is the brute force implementation of iterating through an unsorted array and comparing the current intal with the search key intal.
+
+    14. sorting an array of intals in O(nlogn) time (intal_sort)
+        The intal_sort function is the merge sort implementation of sorting an intal array. It is not in place and takes O(n) extra space but the worst case
+        also takes O(nlogn) time which is better than quicksort which make take O(n^2) in the worst case. All extra memory allocated is taken care of and free is called
+        to not allow any memory leak. 
+
+    15. searching for the given intal value in a sorted arrar in O(logn) time (intal_binsearch)
+        intal_binsearch is the usual binary search implementation, which assumes that a sorted array is passed and finds the given key, if exists in O(logn) time.
+
+    16. Dynamic problem solution to the coin row problem in an intal array (coin_row_problem)
+        coin_row_problem is implemented using a DP approach and a recurrsive solution.
+        The recurrance for the problem is :
+                        F(n) = max{ f(n-2)+Cn , F(n-1)}, where F(n) is the function to find max value uptil n and Cn is the coin value at index n.
+
+
+FUTURE WORK:
+    Some of the functionalities to add in future to this library would be:
+        - Handling negative integers for all of the above functions
+        - Implementing a division function
+        - Implementing trignometric, logarithmic, exponential functions
+        - Implementing functions that could help with calculus of intal values
+
+Name: Dhruv Vohra
+SRN:  PES1201700281
