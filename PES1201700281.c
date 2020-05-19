@@ -475,7 +475,7 @@ char* intal_fibonacci(unsigned int n){
 
     //free up any extra allocated memory
     free(prev_2);
-    //cant free prev1 becuase it points to res
+    //cant free prev1 because it points to res
 
     return res;
 }
@@ -531,13 +531,13 @@ char* intal_factorial(unsigned int n){
 
 // 10. INTAL_BINCOEFF: Function to compute the binary coefficient of C(n,k)
 char* intal_bincoeff(unsigned int n, unsigned int k){
-    //string array to store coefficients, based on pascals identity
 
     //as C(n,k) is same as C(n,n-k). The reduces the computations for k values greater than n/2
     //the max computations will be for k==n/2
     if(k>n/2)
         k = n-k;
 
+    //string array to store coefficients, based on pascals identity
     char **array = (char**)malloc(sizeof(char*)*(k+1));
     //array of size k, initally all values 0
     for(int i=0; i<=k; i++){
