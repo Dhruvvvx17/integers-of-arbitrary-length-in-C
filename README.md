@@ -1,13 +1,11 @@
 # integers-of-arbitrary-length-in-C
 A C library for the integers of arbitrary length (intal).
 
-An intal is represented as a string of decimal digits (0-9) that are stored in the big-endian style.
-
 C allows integer values between the range -2147483648 to +2147483647 for a regular int variable
 
 C allows integer values between the range -9223372036854775808 to +9223372036854775807 for a long int variable
 
-This C library, allows to have integer values of any arbitrary length by storing them in string format. The library provides the basic mathematical operations similar to the operations between two positive int values.
+This C library, allows integer values of any arbitrary length by storing them in string format. The library provides the basic mathematical operations similar to the operations between two positive int values. An intal is represented as a string of decimal digits (0-9) that are stored in the big-endian style.
 
 The functions include:
 
