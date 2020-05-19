@@ -1,7 +1,34 @@
+/*
+    Dhruv Vohra
+    PES1201700281
+    C Library for integers of arbitrary length (intal)
+
+    Includes the following functions:
+        - 1. Addition of two intals (intal_add)
+        - 2. Comparison of two intals (intal_compare)
+        - 3. Difference of two intals (intal_diff)
+        - 4. Product of two intals (intal_multiply)
+        - 5. Mod of two intals (intal_mod)
+        - 6. First intal to the power second intal (intal_pow)
+        - 7. GCD of two intals (intal_gcd)
+        - 8. nth fibonacci number, n is an intal (intal_fibonacci)
+        - 9. Factorial of an intal (intal_factorial)
+        - 10. binomial coefficient of nCk, result returned is intal (intal_bincoeff)
+        - 11. index of max intal in an unsorted array (intal_max)
+        - 12. index of min intal in an unsorted array (intal_min)
+        - 13. index of given intal in an unsorted array (intal_search)
+        - 14. sorting an array of intals in O(nlogn) time (intal_sort)
+        - 15. searching for the given intal value in a sorted arrar in O(logn) time (intal_binsearch)
+        - 16. Dynamic problem solution to the coin row problem in an intal array (coin_row_problem)
+*/
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 #include "intal.h"
+
+//assuming max intal length to be 1000 + 1 for null character
+#define MAX_SIZE 1001
 
 // Helper Function declarations
 static char* padding(const char* intalTemp, int zeros, int new_length);
@@ -11,6 +38,8 @@ static int getMin(unsigned int a, unsigned int b);
 static void merge(char **arr, int n, int m);
 static void mergeSort(char **arr, int n);
 static int custom_binSearch(char **arr, int l, int r, char *key);
+static char* find_max(char **arr, char **dp_table, int n);
+
 
 // Padding the given string with prefix zeros to make the new length equal to the given length
 static char* padding(const char* intalTemp, int zeros, int new_length){
@@ -29,11 +58,12 @@ static char* padding(const char* intalTemp, int zeros, int new_length){
     return res;
 }
 
-// Removing any prefix zeros from the given string
+
+//Removing any prefix zeros from the given string
 static char* stripZeros(const char* intalTemp){
 
     //check if the string contains all zeros, in which case a single character 0 should be returned
-    int check = 1;      // temporary variable to check if the string is all zeros
+    int check = 1;      //temporary variable to check if the string is all zeros
     for(int i=0; i<strlen(intalTemp); i++){
         if(intalTemp[i] != '0'){
             check = 0;
@@ -198,8 +228,8 @@ char* intal_diff(const char* intal1, const char* intal2){
         res = (char*)malloc(sizeof(char)*(2));
         res[0] = '0';
         res[1] = '\0';
-        // free up any extra memory allocated
-        // new_intal1 and new_intal2 are copies of original intal's, have to be freed 
+        //free up any extra memory allocated
+        //new_intal1 and new_intal2 are copies of original intal's, have to be freed 
         free(new_intal1);
         free(new_intal2);
         return res;
@@ -400,7 +430,7 @@ char* intal_gcd(const char* intal1, const char* intal2){
     }
 }
 
-// Helper fucntion, includes actual euclidean algorithm for gcd
+//helper fucntion, includes actual euclidean algorithm for gcd
 static char* compute_gcd(char* n1, char* n2){
     if(intal_compare(n2,"0")==0){
         char *res = strdup(n1);
@@ -483,12 +513,12 @@ char* intal_factorial(unsigned int n){
         t1 = intal_add(next_num,add_one);
         t2 = next_num;
         next_num = t1;
-        free(t2);       // free up the memory occupied by previous next_num
+        free(t2);       //free up the memory occupied by previous next_num
         
         t1 = intal_multiply(res,next_num);
         t2 = res;
         res = t1;
-        free(t2);       // free up the memory occupied by previous res
+        free(t2);       //free up the memory occupied by previous res
         i+=1;
     }
 
@@ -511,7 +541,7 @@ char* intal_bincoeff(unsigned int n, unsigned int k){
     char **array = (char**)malloc(sizeof(char*)*(k+1));
     //array of size k, initally all values 0
     for(int i=0; i<=k; i++){
-        array[i] = (char*)malloc(sizeof(char*)*1001);
+        array[i] = (char*)malloc(sizeof(char*)*MAX_SIZE);
         strcpy(array[i], "0");
     }
     strcpy(array[0],"1");     //C(n,0) = 1
@@ -545,7 +575,7 @@ int intal_max(char **arr, int n){
     int max_index = 0, cmp;
     char *max_intal, *t;
 
-    max_intal = (char*)malloc(sizeof(char)*1001);
+    max_intal = (char*)malloc(sizeof(char)*MAX_SIZE);
     strcpy(max_intal,arr[0]);
 
     for(int i=1; i<n; i++){
@@ -569,7 +599,7 @@ int intal_min(char **arr, int n){
     int min_index = 0, cmp;
     char *min_intal, *t;
 
-    min_intal = (char*)malloc(sizeof(char)*1001);
+    min_intal = (char*)malloc(sizeof(char)*MAX_SIZE);
     strcpy(min_intal,arr[0]);
 
     for(int i=1; i<n; i++){
@@ -611,6 +641,8 @@ void intal_sort(char **arr, int n){
     mergeSort(arr, n);
 }
 
+
+//helper function for mergesort, to divide array into 2 halves
 static void mergeSort(char **arr, int n){    
     if(n<=1)
         return;
@@ -622,13 +654,15 @@ static void mergeSort(char **arr, int n){
     merge(arr, n, m);
 }
 
+
+//helper function for mergesort, to merge two arrays in a sorted order
 static void merge(char **arr, int n, int m){
     int i=0, j=m, k=0;
     
     char **temp;
     temp = (char**)malloc(sizeof(char*)*n);
     for(int x=0; x<n; x++){
-        temp[x] = (char*)malloc(sizeof(char)*1001);
+        temp[x] = (char*)malloc(sizeof(char)*MAX_SIZE);
         strcpy(temp[x],"0");
     }
 
@@ -669,7 +703,7 @@ static void merge(char **arr, int n, int m){
 
 // 15. INTAL_BINSEARCH: A O(logn) implementation to search for the given key in the array 
 int intal_binsearch(char **arr, int n, const char* key){
-    char *k = (char*)malloc(sizeof(char)*1001);
+    char *k = (char*)malloc(sizeof(char)*MAX_SIZE);
     strcpy(k,key);
     int res;
     res = custom_binSearch(arr, 0, n, k);
@@ -677,7 +711,8 @@ int intal_binsearch(char **arr, int n, const char* key){
     return res;
 }
 
-// binary search helper function, actual binary search logic
+
+//binary search helper function, actual binary search logic
 static int custom_binSearch(char **arr, int l, int r, char *key){
     if(r-l+1 < 1){
         return -1;
@@ -692,4 +727,63 @@ static int custom_binSearch(char **arr, int l, int r, char *key){
     
     else
         return custom_binSearch(arr, m+1, r, key);
+}
+
+
+// 16. COIN_ROW_PROBLEM: Returns the max sum that can be obtained from the array, with no consecutive value taken in the sum
+char* coin_row_problem(char **arr, int n){
+
+    //init a dp_table with all zeros, allocating O(n) extra space
+    char **dp_table = (char**)malloc(sizeof(char*)*n);
+    for(int i=0; i<n; i++){
+        dp_table[i] = (char*)malloc(sizeof(char)*MAX_SIZE);
+        strcpy(dp_table[i],"0");
+    }
+    char *res = (char*)malloc(sizeof(char)*MAX_SIZE);
+    strcpy(res,find_max(arr,dp_table,n-1));
+
+    //free up the dp_table memory
+    for(int i=0; i<n; i++){
+        free(dp_table[i]);
+    }
+    free(dp_table);
+
+    return res;
+}
+
+
+//helper function to evaluate the recurrance and find solution to coin-row-problem
+static char* find_max(char **arr, char **dp_table, int n){
+    if(n<0)
+        return "0";
+
+    else if (n==0){
+        strcpy(dp_table[0],arr[0]);
+        return dp_table[0];
+    }
+
+    char *t1, *add_curr_coin, *use_prev_max;
+    
+    //RECURRANCE: F(n) = max{ (Cn + F(n-2)), F(n-1) }
+
+    //first part of recurrance
+    t1 = find_max(arr, dp_table, n-2);
+    add_curr_coin = intal_add(t1, arr[n]); 
+
+    //second part of recurrance
+    use_prev_max = find_max(arr, dp_table, n-1);
+
+    //compare the two to find max value, copy the max in dp_table
+    int r = intal_compare(add_curr_coin, use_prev_max);
+    if(r>=0)
+        strcpy(dp_table[n], add_curr_coin);
+    else
+        strcpy(dp_table[n], use_prev_max);
+
+
+    //free add_curr_coin as that is the result of intal_add which returns a char*
+    free(add_curr_coin);
+    //do not free use_prev_max as that points to a value in dp_table, dp_table memory is freed up in the calling function
+
+    return dp_table[n];
 }
