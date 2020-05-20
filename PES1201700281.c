@@ -532,7 +532,7 @@ char* intal_factorial(unsigned int n){
 // 10. INTAL_BINCOEFF: Function to compute the binary coefficient of C(n,k)
 char* intal_bincoeff(unsigned int n, unsigned int k){
 
-    //as C(n,k) is same as C(n,n-k). The reduces the computations for k values greater than n/2
+    //as C(n,k) is same as C(n,n-k). This reduces the computations for k values greater than n/2
     //the max computations will be for k==n/2
     if(k>n/2)
         k = n-k;
